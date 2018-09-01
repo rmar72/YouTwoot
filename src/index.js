@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YouTweet from './components/youtweet';
+import Home from './components/home';
+import SignUp from './components/signup';
+import { BrowserRouter as Router, Link} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
 
 class App extends Component{
   render(){
     return(
-      <YouTweet/>
+      <Router>
+            <div>
+              <Route path="/" exact render={
+                  ()=>{
+                    return (<Home /> );
+                  }
+                }/>
+              <Route path="/signup" exact render={
+                  ()=>{
+                    return (<SignUp />);
+                  }
+                }/>
+
+              <Route path="/youtweet" exact render={
+                  ()=>{
+                    return (<YouTweet />);
+                  }
+                }/>
+
+            </div>
+      </Router>
     )
   }
 }
