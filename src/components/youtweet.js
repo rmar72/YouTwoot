@@ -4,7 +4,7 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './search_bar';
 import VideoList from "./video_list";
 import VideoPlayer from './video_player';
-import API_KEY from '../../apikey';
+import API_KEY from '../apikey';
 
 class YouTweet extends Component{
   constructor(props){
