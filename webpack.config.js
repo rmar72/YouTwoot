@@ -9,15 +9,21 @@ module.exports = {
     loaders: [
       {
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-1']
         }
       }
+    ],
+    rules: [
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000',
+        use: ['style-loader', 'css-loader']
+      }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['','.js', '.jsx']
   },
   devServer: {
     historyApiFallback: true,
