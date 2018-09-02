@@ -6,7 +6,6 @@ import SignUp from './components/signup';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
-
 class App extends Component{
   render(){
     return(
@@ -34,4 +33,4 @@ class App extends Component{
     )
   }
 }
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('body'));
