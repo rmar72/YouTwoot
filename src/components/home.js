@@ -1,19 +1,32 @@
 import React from 'react';
-import {Navbar, NavbarBrand, NavLink, NavItem, Nav} from 'reactstrap';
+
 
 const Home = () =>{
   return(
-    <Navbar className="navbar navbar-light bg-primary" expand="lg">
-      <NavbarBrand href="/" className="text-white font-italic font-weight-bold">React2meRouting</NavbarBrand>
-        <Nav className="mr-auto" navbar>
-          <NavItem className="pull-left">
-            <NavLink color="dark" href="/" className="text-white font-italic font-weight-bold">Home</NavLink>
-          </NavItem>
-          <NavItem className="float-left">
-            <NavLink href="/about" className="text-white font-italic font-weight-bold">About</NavLink>
-          </NavItem>
-        </Nav>
-    </Navbar>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+        <a className="navbar-brand font-italic" href="#">YouTwoot</a>
+        <div>
+           <ul className="navbar-nav">
+             <li className="nav-item active">
+               <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+             </li>
+             <li className="nav-item">
+               <a className="nav-link" href="/signup">Sign Up</a>
+             </li>
+             <li className="nav-item">
+               <a className="nav-link" href="/youtweet">YT</a>
+             </li>
+           </ul>
+        </div>
+      </nav>
+
+      <div className="jumbotron">
+        <h1 className="display-4">Welcome to YouTwoot</h1>
+        <p className="lead">Front-end of the infamous YouTweet</p>
+      </div>
+    </div>
+
   )
 }
 
