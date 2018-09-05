@@ -8,8 +8,8 @@ const Home = () =>{
         <a className="navbar-brand font-italic" href="#">YouTwoot</a>
         <div>
            <ul className="navbar-nav">
-             <li className="nav-item active">
-               <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+             <li className="nav-item">
+               <a className="nav-link" href="/">Home </a>
              </li>
              <li className="nav-item">
                <a className="nav-link" href="/signup">Sign Up</a>
