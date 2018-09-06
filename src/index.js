@@ -11,7 +11,11 @@ class App extends Component{
     return(
       <Router>
             <div>
-              <Home />
+              <Route path="/" exact render={
+                  ()=>{
+                    return (<Home /> );
+                  }
+                }/>
 
               <Route path="/signup" exact render={
                   ()=>{
@@ -24,7 +28,6 @@ class App extends Component{
                     return (<YouTweet />);
                   }
                 }/>
-
             </div>
       </Router>
     )
