@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NavBar from './navbar';
 import {Col, Button, Form, FormGroup, Label, Input, FormText, Container, Row} from 'reactstrap';
 
 class SignUp extends Component{
@@ -25,6 +26,8 @@ handleLogin = () =>{
   render(){
     return(
       <div>
+        <NavBar />
+
         <Container>
           <Form>
             <h1 >Sign up!</h1>
