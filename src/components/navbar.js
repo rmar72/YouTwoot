@@ -1,9 +1,14 @@
 import React from 'react';
 
+const navStyle = {
+  fontSize: '21px',
+  color: 'white',
+  fontFamily: 'Lucida Console'
+}
 const NavBar = () =>{
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-      <a className="navbar-brand font-italic" href="#">YouTwoot</a>
+      <a className="navbar-brand" style={navStyle} href="#">YouTwoot</a>
       <div>
          <ul className="navbar-nav">
            <li className="nav-item">
