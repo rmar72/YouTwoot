@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './search_bar';
+import NavBar from './navbar';
 import VideoList from "./video_list";
 import VideoPlayer from './video_player';
 import API_KEY from '../apikey';
@@ -31,7 +32,10 @@ render(){
   const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
 
   return(
+
       <div>
+        <NavBar/>
+
         <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
 
         <VideoPlayer video={this.state.selectedVideo}/>
