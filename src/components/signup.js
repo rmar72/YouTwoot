@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NavBar from './navbar';
 import {Col, Button, Form, FormGroup, Label, Input, FormText, Container, Row} from 'reactstrap';
 
 class SignUp extends Component{
@@ -26,35 +25,29 @@ handleLogin = () =>{
   render(){
     return(
       <div>
-        <NavBar />
-
-        <Container>
-          <Form>
-            <h1 >Sign up!</h1>
-            <hr/>
-            <FormGroup>
-               <Label>Email</Label>
-                 <Input type="text"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleEmailChange} />
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Password</Label>
-                <Input type="password"
-                       name="password"
-                       placeholder="Password"
-                       value={this.state.password}
-                       onChange={this.handlePasswordChange} />
-            </FormGroup>
-
-            <Button color="info" type="button" onClick={this.handleLogin}>
-              Join the fun!
-            </Button>
-
-          </Form>
+          <Container>
+            <form>
+              <h1 >Sign up!</h1>
+            <div className="form-group">
+              <label>Enter Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.handleEmailChange}></input>
+            </div>
+            <div className="form-group">
+              <label>Enter Password</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange}></input>
+            </div>
+            <button type="submit" className="btn btn-info" onClick={this.handleLogin}>Join the FUN!</button>
+          </form>
         </Container>
       </div>
     )
