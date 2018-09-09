@@ -1,7 +1,7 @@
 import React from 'react';
 
 const navStyle = {
-  fontSize: '21px',
+  fontSize: '21x',
   color: 'white',
   fontFamily: 'Lucida Console'
 }
