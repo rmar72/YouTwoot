@@ -19,7 +19,6 @@ const VideoList = (props) => {
         </ul>
       </div>
     </div>
-
   )
 }
 
