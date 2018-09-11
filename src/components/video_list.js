@@ -12,13 +12,12 @@ const VideoList = (props) => {
   });
 
   return(
-    <div className="container">
-      <div className="row">
-        <ul className="list-group">
-          <div>{videoItems}</div>
-        </ul>
+      <div className="container">
+        <hr></hr>
+          <ul className="list-group">
+            <div>{videoItems}</div>
+          </ul>
       </div>
-    </div>
   )
 }
 
