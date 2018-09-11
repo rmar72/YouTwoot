@@ -26,6 +26,28 @@
   background-color: #eee;
 }
 
-#body{
- background-color: #f4f8fc;
+.description{
+  background-color: lightgray;
+  font-size: 12px;
+}
+
+.trending{
+  font-size: 20px;
+  text-align: center;
+  color: #0195c6;
+  writing-mode: tb-rl;
+  transform: rotate(-90deg);
+}
+
+.highlight{
+  color: goldenrod;
+  font-size: 22px
+}
+
+.itemContainer{
+  width: 50%;
+}
+
+.body{
+  background-color: #f4f4f4;
 }
