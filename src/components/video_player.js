@@ -1,16 +1,32 @@
 import React from 'react';
 import VideoList from './video_list'
+
 const VideoPlayer = ({video}) => {
   if(!video){
     return <div>Loading...</div>
   }
-  const videoId = video.id;
-  const videoCount = numeral(video.statistics.viewCount).format('0,0');
+
+  const videoId = video.id.videoId || video.id;
+  const vidStat = video.statistics ? numeral(video.statistics.viewCount).format('0,0') : 0;
+  const videoCount = vidStat;
   const url = `https://www.youtube.com/embed/${videoId}`;
+
+  function checkStatus(){
+    if(vidStat){
+      return(<div>Total Views:  <span className="highlight">{videoCount}</span></div>)
+    }
+  }
+
+  function trendTab() {
+    if(vidStat){
+      return(<div><span className="highlight"></span> Trending Video</div>)
+    }
+  }
+
   return (
     <div className="container">
       <div className="row">
-        <div className="col-2 trending"> <span className="highlight">#1</span> Trending Video</div>
+        <div className="col-2 trending">{trendTab()}</div>
         <div className="col-8">
           <div className="embed-responsive embed-responsive-16by9">
             <iframe className="embed-responsive-item" src={url} allowFullScreen></iframe>
@@ -24,8 +40,7 @@ const VideoPlayer = ({video}) => {
             </div>
           </ul>
         </div>
-        <div className="col-2 trending">Total Views: <span className="highlight">{videoCount}</span></div>
-
+        <div className="col-2 trending">{checkStatus()}</div>
       </div>
     </div>
   );
