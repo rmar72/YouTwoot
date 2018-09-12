@@ -19,7 +19,6 @@ class YouTweet extends Component{
 componentWillMount(){
   var url=`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=10&type=video&regionCode=US&key=${API_KEY}`;
   Request.get(url).then((response) =>{
-        console.log(response.body.items);
     this.setState({
       videos: response.body.items,
       selectedVideo: response.body.items[0]
@@ -29,7 +28,6 @@ componentWillMount(){
 
 videoSearch(term){
     YTSearch({key: API_KEY, term: term}, (videos) => {
-      console.log(videos);
         this.setState({
           videos: videos,
           selectedVideo: videos[0]
