@@ -15,7 +15,7 @@ const NavBar = () =>{
              <a className="nav-link" href="/">Home </a>
            </li>
            <li className="nav-item">
-             <a className="nav-link" href="/signup">Sign Up</a>
+             <a className="nav-link" href="/signup">Sign up</a>
            </li>
            <li className="nav-item">
              <a className="nav-link" href="/youtweet">YT</a>
@@ -25,4 +25,5 @@ const NavBar = () =>{
     </nav>
   )
 }
+
 export default NavBar;
