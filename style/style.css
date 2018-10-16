@@ -18,12 +18,12 @@
   border-radius: 4px;
 }
 
-.list-group-item{
+.videoItems{
   cursor: pointer;
 }
 
 .list-group-item:hover{
-  background-color: #eee;
+  background-color: #eff0f2;
 }
 
 .description{
