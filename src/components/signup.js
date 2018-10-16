@@ -30,7 +30,7 @@ handleLogin = () =>{
           <h1>Sign up</h1>
 
           <div className="form-group">
-            <label className="control-label">Username</label>
+            <label className="control-label">Email</label>
             <input
               type="email"
               className="form-control"
