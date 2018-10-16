@@ -10,7 +10,6 @@ const VideoPlayer = ({video}) => {
   const vidStat = video.statistics ? numeral(video.statistics.viewCount).format('0,0') : 0;
   const videoCount = vidStat;
   const url = `https://www.youtube.com/embed/${videoId}`;
-
   function checkStatus(){
     if(vidStat){
       return(<div>Total Views:  <span className="highlight">{videoCount}</span></div>)
