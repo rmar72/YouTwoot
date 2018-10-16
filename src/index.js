@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YouTweet from './components/youtweet';
 import Home from './components/home';
 import SignUp from './components/signup';
+import NavBar from './components/navbar';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
@@ -11,6 +12,7 @@ class App extends Component{
     return(
       <Router>
             <div>
+              <NavBar/>
               <Route path="/" exact render={
                   ()=>{
                     return (<Home /> );
@@ -33,4 +35,4 @@ class App extends Component{
     )
   }
 }
-ReactDOM.render(<App />, document.querySelector('body'));
+ReactDOM.render(<App />, document.querySelector('#main'));

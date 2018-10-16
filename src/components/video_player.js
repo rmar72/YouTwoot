@@ -4,7 +4,7 @@ const VideoPlayer = ({video}) => {
   if(!video){
     return <div>Loading...</div>
   }
-  const videoId = video.id.videoId;
+  const videoId = video.id;
   const url = `https://www.youtube.com/embed/${videoId}`;
   return (
     <div className="container">
@@ -14,13 +14,16 @@ const VideoPlayer = ({video}) => {
             <iframe className="embed-responsive-item" src={url}></iframe>
           </div>
           <ul className="list-group">
-            <li className="list-group-item">{video.snippet.title}</li>
-            <li className="list-group-item">{video.snippet.description}</li>
+            <li className="list-group-item list-group-item-danger text-center font-weight-bold">{video.snippet.channelTitle}</li>
+            <li className="list-group-item list-group-item-secondary text-center text-monospace">{video.snippet.title}</li>
+            <button className="btn btn-info" data-toggle="collapse" data-target="#content">Description</button>
+            <div className="collapse" id="content">
+              {video.snippet.description}
+            </div>
           </ul>
         </div>
       </div>
     </div>
-
   );
 };
 
