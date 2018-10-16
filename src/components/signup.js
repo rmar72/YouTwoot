@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+import {Col, Button, Form, FormGroup, Label, Input, FormText, Container, Row} from 'reactstrap';
 
 class SignUp extends Component{
   constructor(props){
