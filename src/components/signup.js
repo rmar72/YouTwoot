@@ -5,12 +5,15 @@ class SignUp extends Component{
   constructor(props){
     super(props);
 
-   this.state = {
-     email: '',
-     password: ''
-   }
+    this.state = {
+      username: '',
+      email: '',
+      password: ''
+    }
   }
-
+handleUsernameChange = (e) =>{
+  this.setState({username: e.target.value});
+};
 handleEmailChange = (e) =>{
   this.setState({email: e.target.value});
 };
@@ -18,36 +21,67 @@ handlePasswordChange = (e) =>{
   this.setState({password: e.target.value})
 };
 handleLogin = () =>{
+  console.log('Username: ' + this.state.username);
   console.log('Email: ' + this.state.email);
   console.log('Password: ' + this.state.password);
+
+  fetch('http://localhost:3000/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      user: {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password
+      }
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    localStorage.setItem('token', data.user.token);
+  });
+
 };
 
   render(){
     return(
       <div>
-          <Container>
-            <form>
-              <h1 >Sign up!</h1>
-            <div className="form-group">
-              <label>Enter Email</label>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.handleEmailChange}></input>
-            </div>
-            <div className="form-group">
-              <label>Enter Password</label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}></input>
-            </div>
-            <button type="submit" className="btn btn-info" onClick={this.handleLogin}>Join the FUN!</button>
-          </form>
+        <Container>
+          <Form>
+            <h1 >Sign up!</h1>
+            <hr/>
+            <FormGroup>
+              <Label>Username</Label>
+                <Input type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={this.state.username}
+                        onChange={this.handleUsernameChange} />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Email</Label>
+                <Input type="text"
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email}
+                        onChange={this.handleEmailChange} />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Password</Label>
+                <Input type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handlePasswordChange} />
+            </FormGroup>
+
+            <Button color="info" type="button" onClick={this.handleLogin}>
+              Join the fun!
+            </Button>
+
+          </Form>
         </Container>
       </div>
     )
