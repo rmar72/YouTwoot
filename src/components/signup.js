@@ -21,9 +21,6 @@ handlePasswordChange = (e) =>{
   this.setState({password: e.target.value})
 };
 handleLogin = () =>{
-  console.log('Username: ' + this.state.username);
-  console.log('Email: ' + this.state.email);
-  console.log('Password: ' + this.state.password);
 
   fetch('http://localhost:3000/auth/register', {
     method: 'POST',
