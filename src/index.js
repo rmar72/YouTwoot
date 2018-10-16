@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YouTweet from './components/youtweet';
 import Home from './components/home';
 import SignUp from './components/signup';
+import Login from './components/login';
 import NavBar from './components/navbar';
 import { BrowserRouter as Router, Link} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
@@ -22,6 +23,12 @@ class App extends Component{
               <Route path="/signup" exact render={
                   ()=>{
                     return (<SignUp />);
+                  }
+                }/>
+
+              <Route path="/login" exact render={
+                  ()=>{
+                    return (<Login />);
                   }
                 }/>
 

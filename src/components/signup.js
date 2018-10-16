@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Col, Button, Form, FormGroup, Label, Input, FormText, Container, Row} from 'reactstrap';
+import Axios from 'axios';
 
 class SignUp extends Component{
   constructor(props){
@@ -21,7 +21,6 @@ handlePasswordChange = (e) =>{
   this.setState({password: e.target.value})
 };
 handleLogin = () =>{
-
   fetch('http://localhost:3000/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
@@ -37,7 +36,6 @@ handleLogin = () =>{
   .then(data => {
     localStorage.setItem('token', data.user.token);
   });
-
 };
 
   render(){

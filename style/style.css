@@ -18,14 +18,41 @@
   border-radius: 4px;
 }
 
-.list-group-item{
+.videoItems{
   cursor: pointer;
 }
 
 .list-group-item:hover{
-  background-color: #eee;
+  background-color: #eff0f2;
 }
 
-#body{
- background-color: #f4f8fc;
+.description{
+  background-color: lightgray;
+  font-size: 12px;
+}
+
+.trending{
+  font-size: 20px;
+  text-align: center;
+  color: #0195c6;
+  writing-mode: tb-rl;
+  transform: rotate(-90deg);
+}
+
+.highlight{
+  color: goldenrod;
+  font-size: 22px
+}
+
+.itemContainer{
+  width: 50%;
+}
+
+.body{
+  background-color: #f4f4f4;
+}
+
+.title{
+  word-wrap: break-word;
+  font-size: 16px
 }
