@@ -27,6 +27,9 @@ const NavBar = () =>{
             <a className="nav-link" href="/youtweet">YT</a>
           </li>
           <li className="nav-item">
+            <a className="nav-link" href="/login">Log in</a>
+          </li>
+          <li className="nav-item">
             <a className="nav-link" href="/" onClick={logOut}>Log out</a>
           </li>
         </ul>
