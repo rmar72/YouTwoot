@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Col, Button, Form, FormGroup, Label, Input, FormText, Container, Row} from 'reactstrap';
 
 class SignUp extends Component{
   constructor(props){
@@ -20,7 +19,7 @@ handleEmailChange = (e) =>{
 handlePasswordChange = (e) =>{
   this.setState({password: e.target.value})
 };
-handleLogin = () =>{
+handleSignUp = () =>{
   fetch('http://localhost:3000/auth/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
@@ -40,44 +39,40 @@ handleLogin = () =>{
 
   render(){
     return(
-      <div>
-        <Container>
-          <Form>
+      <div className="container">
+          <form>
             <h1 >Sign up!</h1>
             <hr/>
-            <FormGroup>
-              <Label>Username</Label>
-                <Input type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={this.state.username}
-                        onChange={this.handleUsernameChange} />
-            </FormGroup>
 
-            <FormGroup>
-              <Label>Email</Label>
-                <Input type="text"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleEmailChange} />
-            </FormGroup>
+            <div className="form-group">
+              <label className="control-label">Username</label>
+                <input type="text"
+                       name="username"
+                       placeholder="Username"
+                       value={this.state.username}
+                       onChange={this.handleUsernameChange}></input>
+            </div>
 
-            <FormGroup>
-              <Label>Password</Label>
-                <Input type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.handlePasswordChange} />
-            </FormGroup>
+            <div className="form-group">
+              <label className="control-label">Email</label>
+                <input type="text"
+                       name="email"
+                       placeholder="Email"
+                       value={this.state.email}
+                       onChange={this.handleEmailChange}></input>
+            </div>
 
-            <Button color="info" type="button" onClick={this.handleLogin}>
-              Join the fun!
-            </Button>
+            <div className="form-group">
+              <label className="control-label">Password</label>
+                <input type="password"
+                       name="password"
+                       placeholder="Password"
+                       value={this.state.password}
+                       onChange={this.handlePasswordChange}></input>
+            </div>
 
-          </Form>
-        </Container>
+            <button className="btn btn-info" type="button" onClick={this.handleSignUp}>Join the fun!</button>
+          </form>
       </div>
     )
   }
