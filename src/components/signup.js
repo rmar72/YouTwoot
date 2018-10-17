@@ -48,6 +48,7 @@ handleSignUp = () =>{
               <label className="control-label">Username</label>
                 <input type="text"
                        name="username"
+                       className="form-control"
                        placeholder="Username"
                        value={this.state.username}
                        onChange={this.handleUsernameChange}></input>
@@ -57,6 +58,7 @@ handleSignUp = () =>{
               <label className="control-label">Email</label>
                 <input type="text"
                        name="email"
+                       className="form-control"
                        placeholder="Email"
                        value={this.state.email}
                        onChange={this.handleEmailChange}></input>
@@ -66,6 +68,7 @@ handleSignUp = () =>{
               <label className="control-label">Password</label>
                 <input type="password"
                        name="password"
+                       className="form-control"
                        placeholder="Password"
                        value={this.state.password}
                        onChange={this.handlePasswordChange}></input>
