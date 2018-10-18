@@ -36,6 +36,17 @@ const VideoListItem = ({video, onVideoSelect}) => {
             <img className="mr-3" src={imageUrl}/>
             <div className="title">{video.snippet.title}</div>
         </div>
+
+        <div>
+          <a type="button" 
+            className="btn btn-block btn-social btn-twitter"
+            onClick={(e) => tweetVideo(e, video)}
+          >
+            <span className="fa fa-twitter"></span> Tweet Me!
+          </a>
+        </div>
+
+      </li>
   )
 };
 
