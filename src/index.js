@@ -5,11 +5,30 @@ import Home from './components/home';
 import SignUp from './components/signup';
 import Login from './components/login';
 import NavBar from './components/navbar';
-import { BrowserRouter as Router, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Link, Redirect} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
 class App extends Component{
   render(){
+
+    var logged = false;
+
+    const checkToken = () =>{
+      var token = localStorage.getItem('token');
+      if(token){
+        logged=true;
+        return token
+      }
+    }
+
+    checkToken()
+
+    const PrivateRoute = ({component: Component, ...rest}) => (
+      <Route {...rest} render={(props) =>(
+          logged ? <Component {...props} /> : <Redirect to="/login"/>
+        )}/>
+    )
+
     return(
       <Router>
             <div>
@@ -32,11 +51,8 @@ class App extends Component{
                   }
                 }/>
 
-              <Route path="/youtweet" exact render={
-                  ()=>{
-                    return (<YouTweet />);
-                  }
-                }/>
+              <PrivateRoute path="/youtweet" exact component={YouTweet}/>
+              
             </div>
       </Router>
     )

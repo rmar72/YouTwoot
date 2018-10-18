@@ -11,6 +11,17 @@ const NavBar = () =>{
   const logOut = function(){
     localStorage.removeItem('token');
   }
+  var logged = false;
+
+  const checkToken = () =>{
+    var token = localStorage.getItem('token');
+    if(token){
+      logged=true;
+      return token
+    }
+  }
+
+  checkToken()
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary">
@@ -23,9 +34,7 @@ const NavBar = () =>{
           <li className="nav-item">
             <a className="nav-link" href="/signup">Sign Up</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/youtweet">YT</a>
-          </li>
+          {logged ? (<li className="nav-item"> <a className="nav-link" href="/youtweet">YT</a> </li>) : ''}
           <li className="nav-item">
             <a className="nav-link" href="/login">Log in</a>
           </li>
