@@ -53,3 +53,7 @@
   word-wrap: normal;
   font-size: 16px
 }
+
+#linkItem li a{
+  color: lightgray;
+}
