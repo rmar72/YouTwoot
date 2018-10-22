@@ -24,28 +24,28 @@ const NavBar = () =>{
   checkToken()
 
   return (
-    <nav className="navbar navbar-expand navbar-light bg-primary">
-      <a className="navbar-brand" style={navStyle} href="#">YouTwoot</a>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+       <a className="navbar-brand" href="#" style={navStyle}>YouTwoot</a>
+       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems">
+         <span className="navbar-toggler-icon"></span>
+       </button>
 
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="/">Home </a>
-          </li>
-          {logged ? (<li className="nav-item"> <a className="nav-link" href="/youtweet">YT</a> </li>) : ''}
-        </ul>
-      </div>
+       <div className="collapse navbar-collapse" id="navbarItems">
+           <ul className="navbar-nav mr-auto">
+             <li className="nav-item">
+               <a className="nav-link" href="/">Home </a>
+             </li>
+             {logged ? (<li className="nav-item"><a className="nav-link" href="/youtweet">YT</a></li>) : ''}
+           </ul>
 
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav ml-auto">
-          {logged ? '' : ( <li className="nav-item"><a className="nav-link" href="/signup">Sign Up</a></li>)}
-          
-          {logged
-            ? (<li className="nav-item"><a className="nav-link" href="/" onClick={logOut}>Log out</a></li>)
-            : (<li className="nav-item"> <a className="nav-link" href="/login">Log in</a></li>)}
-        </ul>
-      </div>
+           <ul className="navbar-nav ml-auto">
+             {logged ? '' : (<li className="nav-item"><a className="nav-link" href="/signup">Sign Up</a></li>)}
 
+             {logged
+               ? (<li className="nav-item"><a className="nav-link" href="/" onClick={logOut}>Log out</a></li>)
+               : (<li className="nav-item"> <a className="nav-link" href="/login">Log in</a></li>)}
+           </ul>
+       </div>
     </nav>
   )
 }
