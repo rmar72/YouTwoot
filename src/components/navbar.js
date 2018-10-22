@@ -31,14 +31,14 @@ const NavBar = () =>{
        </button>
 
        <div className="collapse navbar-collapse" id="navbarItems">
-           <ul className="navbar-nav mr-auto">
-             <li className="nav-item">
-               <a className="nav-link" href="/">Home </a>
+           <ul className="navbar-nav mr-auto" id="linkItem">
+             <li className="nav-item" >
+               <a className="nav-link" href="/">Home</a>
              </li>
              {logged ? (<li className="nav-item"><a className="nav-link" href="/youtweet">YT</a></li>) : ''}
            </ul>
 
-           <ul className="navbar-nav ml-auto">
+           <ul className="navbar-nav ml-auto" id="linkItem">
              {logged ? '' : (<li className="nav-item"><a className="nav-link" href="/signup">Sign Up</a></li>)}
 
              {logged
