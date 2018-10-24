@@ -7,20 +7,20 @@ class Login extends Component{
     this.state = {
       email: '',
       password: '',
-      emailValid: null
+      validEmail: null
     }
   }
 
-  handleEmailSend = (e) =>{
+  emailInputHandler = (e) =>{
     this.setState({email: e.target.value})
   }
 
-  handleEmailValidation = () =>{
+  validEmailHandler = () =>{
     let {validity} = this.refs.EmailInput;
     if(!validity.valueMissing && validity.valid){
-      this.setState({emailValid: true});
+      this.setState({validEmail: true});
     } else {
-      this.setState({emailValid: false});
+      this.setState({validEmail: false});
     }
   }
 
@@ -29,7 +29,7 @@ class Login extends Component{
   }
 
   handleTheLogin = () =>{
-    this.setState({email: '', password: '', emailValid: null});
+    this.setState({email: '', password: '', validEmail: null});
 
     fetch('http://localhost:3000/auth/login',{
       method: 'POST',
@@ -58,16 +58,16 @@ class Login extends Component{
               type="email"
               name="email"
               placeholder="Your email"
-              className = { 'form-control ' + (  this.state.emailValid != null ?
-                                                (this.state.emailValid ? "is-valid" : "is-invalid") : '') }
+              className = { 'form-control ' + (  this.state.validEmail != null ?
+                                                (this.state.validEmail ? "is-valid" : "is-invalid") : '') }
               value={this.state.email}
-              onChange={this.handleEmailSend}
-              onBlur={this.handleEmailValidation}
+              onChange={this.emailInputHandler}
+              onBlur={this.validEmailHandler}
               required
               ref="EmailInput"
               ></input>
               {
-                this.state.emailValid ? '' : 
+                this.state.validEmail ? '' : 
                   <div className="invalid-feedback">
                     Please provide a valid email.
                   </div>
