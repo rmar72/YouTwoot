@@ -6,12 +6,21 @@ class Login extends Component{
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      emailValid: null
     }
   }
 
   handleEmailSend = (e) =>{
     this.setState({email: e.target.value})
+
+  handleEmailValidation = () =>{
+    let {validity} = this.refs.EmailInput;
+    if(!validity.valueMissing && validity.valid){
+      this.setState({emailValid: true});
+    } else {
+      this.setState({emailValid: false});
+    }
   }
 
   handlePasswordSend = (e) =>{
@@ -43,12 +52,15 @@ class Login extends Component{
           <div className="form-group">
             <label className="control-label">Email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="Your email"
               className="form-control"
               value={this.state.email}
               onChange={this.handleEmailSend}
+              onBlur={this.handleEmailValidation}
+              required
+              ref="EmailInput"
               ></input>
           </div>
 
