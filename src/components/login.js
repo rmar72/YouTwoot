@@ -27,6 +27,10 @@ class Login extends Component{
     }
   }
 
+  inputRetype = () =>{
+    this.setState({validEmail: null});
+  }
+
   handlePasswordSend = (e) =>{
     this.setState({password: e.target.value})
   }
@@ -66,6 +70,7 @@ class Login extends Component{
               value={this.state.email}
               onChange={this.emailInputHandler}
               onBlur={this.validEmailHandler}
+              onClick={this.inputRetype}
               required
               ref="EmailInput"
               ></input>
