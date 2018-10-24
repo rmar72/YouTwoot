@@ -13,6 +13,7 @@ class Login extends Component{
 
   handleEmailSend = (e) =>{
     this.setState({email: e.target.value})
+  }
 
   handleEmailValidation = () =>{
     let {validity} = this.refs.EmailInput;
