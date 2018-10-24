@@ -55,13 +55,21 @@ class Login extends Component{
               type="email"
               name="email"
               placeholder="Your email"
-              className="form-control"
+              className = { 'form-control ' + (  this.state.emailValid != null ?
+                                                (this.state.emailValid ? "is-valid" : "is-invalid") : '') }
               value={this.state.email}
               onChange={this.handleEmailSend}
               onBlur={this.handleEmailValidation}
               required
               ref="EmailInput"
               ></input>
+              {
+                this.state.emailValid ? '' : 
+                  <div className="invalid-feedback">
+                    Please provide a valid email.
+                  </div>
+              }
+              
           </div>
 
           <div className="form-group">
