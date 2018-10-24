@@ -29,6 +29,8 @@ class Login extends Component{
   }
 
   handleTheLogin = () =>{
+    this.setState({email: '', password: '', emailValid: null});
+
     fetch('http://localhost:3000/auth/login',{
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
