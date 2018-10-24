@@ -12,7 +12,10 @@ class Login extends Component{
   }
 
   emailInputHandler = (e) =>{
-    this.setState({email: e.target.value})
+    this.setState({email: e.target.value});
+    if(this.state.email.match(/\.[a-zA-Z]/)){
+      this.setState({validEmail: true});
+    }
   }
 
   validEmailHandler = () =>{
