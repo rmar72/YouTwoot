@@ -33,6 +33,7 @@ class EmailInput extends Component{
     }
 
     render(){
+        let {validEmail, email} = this.state;
         return (
             <div className="form-group">
                 <label className="control-label">Email</label>
@@ -40,9 +41,9 @@ class EmailInput extends Component{
                     type="email"
                     name="email"
                     placeholder="Your email"
-                    className = { 'form-control ' + ( this.state.validEmail != null ?
-                                                    ( this.state.validEmail ? "is-valid" : "is-invalid") : '') }
-                    value={this.state.email}
+                    className = { 'form-control ' + ( validEmail != null ?
+                                                    ( validEmail ? "is-valid" : "is-invalid") : '') }
+                    value={email}
                     onChange={this.emailInputHandler}
                     onBlur={this.validEmailHandler}
                     onClick={this.inputRetype}
@@ -50,7 +51,7 @@ class EmailInput extends Component{
                     ref="EmailInput"
                 />
                     {
-                        this.state.validEmail ? '' : 
+                        validEmail ? '' : 
                             <div className="invalid-feedback">
                                 Please provide a valid email.
                             </div>
