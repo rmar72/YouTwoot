@@ -4,7 +4,8 @@ const emailRegex = /\S+@\S+\.[a-zA-Z]/;
 
 class EmailInput extends Component{
     constructor(props){
-        super(props)
+        super(props);
+        this.EmailInput = React.createRef();
 
         this.state = {
             email: '',
@@ -20,7 +21,7 @@ class EmailInput extends Component{
     }
     
     validEmailHandler = () =>{
-        let {validity: {valueMissing, valid}, value} = this.refs.EmailInput;
+        let {validity: {valueMissing, valid}, value} = this.EmailInput.current;
 
         if(!valueMissing && valid && value.match(emailRegex) )
             this.setState({validEmail: true});
@@ -41,21 +42,21 @@ class EmailInput extends Component{
                     type="email"
                     name="email"
                     placeholder="Your email"
-                    className = { 'form-control ' + ( validEmail != null ?
+                    className={ 'form-control ' + ( validEmail != null ?
                                                     ( validEmail ? "is-valid" : "is-invalid") : '') }
                     value={email}
                     onChange={this.emailInputHandler}
                     onBlur={this.validEmailHandler}
                     onClick={this.inputRetype}
                     required
-                    ref="EmailInput"
+                    ref={this.EmailInput}
                 />
-                    {
-                        validEmail ? '' : 
-                            <div className="invalid-feedback">
-                                Please provide a valid email.
-                            </div>
-                    }
+                {
+                    validEmail ? '' : 
+                        <div className="invalid-feedback">
+                            Please provide a valid email.
+                        </div>
+                }
             </div>
         )
     }
