@@ -48,7 +48,6 @@ class EmailInput extends Component{
                     onChange={this.emailInputHandler}
                     onBlur={this.validEmailHandler}
                     onClick={this.inputRetype}
-                    required
                     ref={this.EmailInput}
                 />
                 {
