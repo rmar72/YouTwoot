@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EmailInput from './email_input';
+import PasswordInput from './password_input';
 
 class SignUp extends Component{
   constructor(props){
@@ -7,16 +8,13 @@ class SignUp extends Component{
 
     this.state = {
       username: '',
-      password: ''
     }
   }
 handleUsernameChange = (e) =>{
   this.setState({username: e.target.value});
 };
 
-handlePasswordChange = (e) =>{
-  this.setState({password: e.target.value})
-};
+
 handleSignUp = () =>{
   fetch('http://localhost:3000/auth/register', {
     method: 'POST',
@@ -54,15 +52,7 @@ handleSignUp = () =>{
 
             <EmailInput />
 
-            <div className="form-group">
-              <label className="control-label">Password</label>
-                <input type="password"
-                       name="password"
-                       className="form-control"
-                       placeholder="Password"
-                       value={this.state.password}
-                       onChange={this.handlePasswordChange}></input>
-            </div>
+            <PasswordInput />
 
             <button className="btn btn-info" type="button" onClick={this.handleSignUp}>Join the fun!</button>
           </form>
