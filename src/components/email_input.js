@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+const emailRegex = /\S+@\S+\.[a-zA-Z]/;
+
 class EmailInput extends Component{
     constructor(props){
         super(props)
@@ -12,19 +14,18 @@ class EmailInput extends Component{
 
     emailInputHandler = (e) =>{
         this.setState({email: e.target.value});
-        if(this.state.email.match(/\.[a-zA-Z]/)){
+
+        if(this.state.email.match(emailRegex))
             this.setState({validEmail: true});
-        }
     }
     
     validEmailHandler = () =>{
-        let {validity, value} = this.refs.EmailInput;
+        let {validity: {valueMissing, valid}, value} = this.refs.EmailInput;
 
-        if(!validity.valueMissing && validity.valid){
+        if(!valueMissing && valid && value.match(emailRegex) )
             this.setState({validEmail: true});
-        } else {
+        else 
             this.setState({validEmail: false});
-        }
     }
     
     inputRetype = () =>{
