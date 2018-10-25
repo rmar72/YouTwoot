@@ -11,10 +11,19 @@ class PasswordInput extends Component{
         }
     }
 
-    handlePasswordChange = (e) =>{
-        console.log(e.target.value)
+    validPasswordHandler = (e) =>{
         this.setState({password: e.target.value})
+
         let {patternMismatch, valid} = this.PasswordRef.current.validity;
+
+        if(!patternMismatch && valid)
+            this.setState({validPassword: true});
+        else 
+            this.setState({validPassword: false});
+    }
+
+    inputRetype = () =>{
+        this.setState({validPassword: null});
     }
 
     render(){
