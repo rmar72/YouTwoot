@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import EmailInput from './email_input';
 
 class SignUp extends Component{
   constructor(props){
@@ -6,16 +7,13 @@ class SignUp extends Component{
 
     this.state = {
       username: '',
-      email: '',
       password: ''
     }
   }
 handleUsernameChange = (e) =>{
   this.setState({username: e.target.value});
 };
-handleEmailChange = (e) =>{
-  this.setState({email: e.target.value});
-};
+
 handlePasswordChange = (e) =>{
   this.setState({password: e.target.value})
 };
@@ -54,15 +52,7 @@ handleSignUp = () =>{
                        onChange={this.handleUsernameChange}></input>
             </div>
 
-            <div className="form-group">
-              <label className="control-label">Email</label>
-                <input type="text"
-                       name="email"
-                       className="form-control"
-                       placeholder="Email"
-                       value={this.state.email}
-                       onChange={this.handleEmailChange}></input>
-            </div>
+            <EmailInput />
 
             <div className="form-group">
               <label className="control-label">Password</label>
