@@ -11,19 +11,22 @@ class PasswordInput extends Component{
         }
     }
 
-    validPasswordHandler = (e) =>{
-        this.setState({password: e.target.value})
+    passwordInputHandler = (e) =>{
+        this.setState({password: e.target.value});
 
+        this.validPasswordHandler();
+
+        if(!e.target.value)
+            this.setState({validPassword: false});
+    }
+
+    validPasswordHandler = () =>{
         let {patternMismatch, valid} = this.PasswordRef.current.validity;
 
         if(!patternMismatch && valid)
             this.setState({validPassword: true});
         else 
-            this.setState({validPassword: false});
-    }
-
-    inputRetype = () =>{
-        this.setState({validPassword: null});
+            this.setState({validPassword: false});   
     }
 
     render(){
@@ -34,12 +37,12 @@ class PasswordInput extends Component{
                 <input 
                     type="password"
                     name="password"
-                    className = { 'form-control ' + ( validPassword != null ?
-                        ( validPassword ? "is-valid" : "is-invalid") : '') }
+                    className={ 'form-control ' + ( validPassword != null ?
+                                                    ( validPassword ? "is-valid" : "is-invalid") : '') }
                     placeholder="Password"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     value={this.state.password}
-                    onChange={this.validPasswordHandler}
+                    onChange={this.passwordInputHandler}
                     ref={this.PasswordRef}
                 />
                 {
