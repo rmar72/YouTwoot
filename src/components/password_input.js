@@ -27,17 +27,27 @@ class PasswordInput extends Component{
     }
 
     render(){
+        let {validPassword} = this.state;
         return(
             <div className="form-group">
                 <label className="control-label">Password</label>
                 <input 
                     type="password"
                     name="password"
-                    className="form-control"
+                    className = { 'form-control ' + ( validPassword != null ?
+                        ( validPassword ? "is-valid" : "is-invalid") : '') }
                     placeholder="Password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     value={this.state.password}
-                    onChange={this.handlePasswordChange}></input>
+                    onChange={this.validPasswordHandler}
                     ref={this.PasswordRef}
+                />
+                {
+                    validPassword ? '' : 
+                        <div className="invalid-feedback">
+                            Password must contain a minimum of 8 characters, a lowercase letter, an uppercase letter and a number.
+                        </div>
+                }
             </div>
         )
     }
