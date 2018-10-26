@@ -25,10 +25,9 @@ class EmailInput extends Component{
             this.setState({validEmail: false});
     }
     
-    inputRetype = () =>{
-        this.setState({validEmail: null});
-    }
-
+    inputRetype = () => this.setState({validEmail: null});
+    
+    
     render(){
         let {validEmail, email} = this.state;
         return (
