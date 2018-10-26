@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import UsernameInput from './username_input';
 import EmailInput from './email_input';
 import PasswordInput from './password_input';
+
 
 class SignUp extends Component{
   constructor(props){
@@ -47,21 +49,13 @@ handleSignUp = () =>{
           <form>
             <h1 >Sign up!</h1>
             <hr/>
-            <div className="form-group">
-              <label className="control-label">Username</label>
-                <input 
-                    type="text"
-                    name="username"
-                    className="form-control"
-                    placeholder="Username"
-                    value={this.state.username}
-                    onChange={this.usernameInputHandler}
-                />
-            </div>
+            
+            <UsernameInput
+              usernameValue={username => this.setState({username})} />
 
             <EmailInput 
               emailValue={email => this.setState({email})} />
-              
+
             <PasswordInput 
               passwordValue={password => this.setState({password})} />
 
