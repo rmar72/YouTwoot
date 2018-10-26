@@ -11,7 +11,7 @@ class SignUp extends Component{
       password: ''
     }
   }
-handleUsernameChange = (e) =>{
+usernameInputHandler = (e) =>{
   this.setState({username: e.target.value});
 };
 
@@ -40,15 +40,16 @@ handleSignUp = () =>{
           <form>
             <h1 >Sign up!</h1>
             <hr/>
-
             <div className="form-group">
               <label className="control-label">Username</label>
-                <input type="text"
-                       name="username"
-                       className="form-control"
-                       placeholder="Username"
-                       value={this.state.username}
-                       onChange={this.handleUsernameChange}></input>
+                <input 
+                    type="text"
+                    name="username"
+                    className="form-control"
+                    placeholder="Username"
+                    value={this.state.username}
+                    onChange={this.usernameInputHandler}
+                />
             </div>
 
             <EmailInput />
