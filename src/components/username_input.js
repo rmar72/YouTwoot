@@ -10,9 +10,37 @@ class UsernameInput extends Component {
         }
     }
 
+    usernameInputHandler = (e) => {
+        console.log(e.target.value)
+        this.setState({username: e.target.value})
+    }
+
+    validUsernameHandler = () => {
+
+    }
+
+
     render(){
+        let {validUsername} = this.state;
         return(
-            <div></div>
+            <div className="form-group">
+                <label className="control-label">Username</label>
+                    <input 
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        placeholder="Username"
+                        value={this.state.username}
+                        onChange={this.usernameInputHandler}
+                    />
+                    {
+                        validUsername ? "" : 
+                            <div className="invalid-feedback">
+                                Please provide a user name.
+                            </div>
+                    }
+            </div>
+            
         )
     }
 }
