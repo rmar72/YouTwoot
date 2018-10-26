@@ -10,15 +10,26 @@ class PasswordInput extends Component{
             validPassword: null
         }
     }
-
+    
     passwordInputHandler = (e) =>{
-        this.setState({password: e.target.value});
+        this.setState(
+            { password: e.target.value },
+            () => {
+                if(this.state.validPassword)
+                    this.props.passwordValue(this.state.password);
+
+                else
+                    this.props.passwordValue("");
+            }
+        );
 
         this.validPasswordHandler();
 
         if(!e.target.value)
             this.setState({validPassword: false});
     }
+
+
 
     validPasswordHandler = () =>{
         let {patternMismatch, valid} = this.PasswordRef.current.validity;

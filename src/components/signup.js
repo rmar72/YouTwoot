@@ -8,6 +8,7 @@ class SignUp extends Component{
 
     this.state = {
       username: '',
+      password: ''
     }
   }
 handleUsernameChange = (e) =>{
@@ -51,8 +52,8 @@ handleSignUp = () =>{
             </div>
 
             <EmailInput />
-
-            <PasswordInput />
+            <PasswordInput 
+              passwordValue={password => this.setState({password})} />
 
             <button className="btn btn-info" type="button" onClick={this.handleSignUp}>Join the fun!</button>
           </form>
