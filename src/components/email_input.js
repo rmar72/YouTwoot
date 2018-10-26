@@ -13,12 +13,8 @@ class EmailInput extends Component{
         }
     }
 
-    emailInputHandler = (e) =>{
-        this.setState({email: e.target.value});
-
-        if(this.state.email.match(emailRegex))
-            this.setState({validEmail: true});
-    }
+    emailInputHandler = (e) => this.setState({email: e.target.value});
+    
     
     validEmailHandler = () =>{
         let {validity: {valueMissing, valid}, value} = this.EmailInput.current;
