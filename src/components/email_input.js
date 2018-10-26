@@ -20,9 +20,13 @@ class EmailInput extends Component{
         let {validity: {valueMissing, valid}, value} = this.EmailInput.current;
 
         if(!valueMissing && valid && value.match(emailRegex) )
-            this.setState({validEmail: true});
+            this.setState(
+                {validEmail: true},
+                () => this.props.emailValue(this.state.email) );
         else 
-            this.setState({validEmail: false});
+            this.setState(
+                {validEmail: false},
+                () => this.props.emailValue("") );
     }
     
     inputRetype = () => this.setState({validEmail: null});

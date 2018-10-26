@@ -8,6 +8,7 @@ class SignUp extends Component{
 
     this.state = {
       username: '',
+      email: '',
       password: ''
     }
   }
@@ -52,7 +53,8 @@ handleSignUp = () =>{
                 />
             </div>
 
-            <EmailInput />
+            <EmailInput 
+              emailValue={email => this.setState({email})} />
             <PasswordInput 
               passwordValue={password => this.setState({password})} />
 
