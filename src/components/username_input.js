@@ -11,12 +11,22 @@ class UsernameInput extends Component {
     }
 
     usernameInputHandler = (e) => {
-        console.log(e.target.value)
-        this.setState({username: e.target.value})
+        this.setState(
+            {username: e.target.value},
+            () => {
+                if(this.state.username)
+                    this.setState({validUsername: true});
+                else
+                    this.setState({validUsername: false});
+            }
+        );
     }
 
     validUsernameHandler = () => {
-
+        if(this.state.validUsername)
+            this.props.usernameValue(this.state.username);
+        else
+            this.props.usernameValue("");
     }
 
 
@@ -28,10 +38,12 @@ class UsernameInput extends Component {
                     <input 
                         type="text"
                         name="username"
-                        className="form-control"
+                        className={ "form-control " + ( validUsername != null ?
+                                                        ( validUsername ? "is-valid" : "is-invalid") : "") }
                         placeholder="Username"
                         value={this.state.username}
                         onChange={this.usernameInputHandler}
+                        onBlur={this.validUsernameHandler}
                     />
                     {
                         validUsername ? "" : 
