@@ -16,24 +16,30 @@ usernameInputHandler = (e) =>{
   this.setState({username: e.target.value});
 };
 
-
 handleSignUp = () =>{
-  fetch('http://localhost:3000/auth/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      user: {
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password
-      }
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    localStorage.setItem('token', data.user.token);
-  });
+  alert(1)
+  if( this.state.username && this.state.email && this.state.password){
+      fetch('http://localhost:3000/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          user: {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+          }
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        localStorage.setItem('token', data.user.token);
+      });
+  }
+
 };
+  isValid = () => {
+    return true;
+  }
 
   render(){
     return(
@@ -55,10 +61,19 @@ handleSignUp = () =>{
 
             <EmailInput 
               emailValue={email => this.setState({email})} />
+              
             <PasswordInput 
               passwordValue={password => this.setState({password})} />
 
-            <button className="btn btn-info" type="button" onClick={this.handleSignUp}>Join the fun!</button>
+            <button
+              className="btn btn-info disabled" 
+              type="button" 
+              disabled={this.isValid()} 
+              onClick={this.handleSignUp}
+            > 
+              Join the fun!
+            </button>
+
           </form>
       </div>
     )
