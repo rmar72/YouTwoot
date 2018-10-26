@@ -20,8 +20,6 @@ class PasswordInput extends Component {
             this.setState({validPassword: false});
     }
 
-
-
     validPasswordHandler = () => {
         let {patternMismatch, valid} = this.PasswordRef.current.validity;
 
@@ -34,6 +32,7 @@ class PasswordInput extends Component {
                 {validPassword: false},
                 () => this.props.passwordValue("") );   
     }
+    
 
     render(){
         let {validPassword} = this.state;
