@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 
-class PasswordInput extends Component{
+class PasswordInput extends Component {
     constructor(props){
         super(props);
         this.PasswordRef = React.createRef();
 
         this.state = {
-            password: '',
+            password: "",
             validPassword: null
         }
     }
     
-    passwordInputHandler = (e) =>{
+    passwordInputHandler = (e) => {
         this.setState({password: e.target.value});
 
         this.validPasswordHandler();
@@ -22,7 +22,7 @@ class PasswordInput extends Component{
 
 
 
-    validPasswordHandler = () =>{
+    validPasswordHandler = () => {
         let {patternMismatch, valid} = this.PasswordRef.current.validity;
 
         if(!patternMismatch && valid)
@@ -43,8 +43,8 @@ class PasswordInput extends Component{
                 <input 
                     type="password"
                     name="password"
-                    className={ 'form-control ' + ( validPassword != null ?
-                                                    ( validPassword ? "is-valid" : "is-invalid") : '') }
+                    className={ "form-control " + ( validPassword != null ?
+                                                    ( validPassword ? "is-valid" : "is-invalid") : "") }
                     placeholder="Password"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     value={this.state.password}
@@ -52,7 +52,7 @@ class PasswordInput extends Component{
                     ref={this.PasswordRef}
                 />
                 {
-                    validPassword ? '' : 
+                    validPassword ? "" : 
                         <div className="invalid-feedback">
                             Password must contain a minimum of 8 characters, a lowercase letter, an uppercase letter and a number.
                         </div>
