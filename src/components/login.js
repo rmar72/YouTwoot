@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import EmailInput from './email_input';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component{
   constructor(props){
@@ -9,6 +9,11 @@ class Login extends Component{
       email: '',
       password: '',
     }
+  }
+
+  routeChange(){
+    let path = "/";
+    this.props.history.push(path);
   }
 
   handleEmailSend = (e) =>{
@@ -35,6 +40,9 @@ class Login extends Component{
     .then(response => response.json())
     .then(data => {
       localStorage.setItem('token', data.user.token);
+      setTimeout(()=>{
+        this.routeChange();
+      }, 300);
     });
   }
 
@@ -75,4 +83,4 @@ class Login extends Component{
   }
 }
 
-export default Login;
+export default withRouter(Login);
