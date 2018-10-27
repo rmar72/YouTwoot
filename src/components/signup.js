@@ -1,41 +1,49 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import UsernameInput from "./username_input";
+import EmailInput from "./email_input";
+import PasswordInput from "./password_input";
+import { withRouter } from 'react-router-dom';
 
-class SignUp extends Component{
+class SignUp extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      username: '',
-      email: '',
-      password: ''
+      username: "",
+      email: "",
+      password: ""
     }
   }
-handleUsernameChange = (e) =>{
-  this.setState({username: e.target.value});
-};
-handleEmailChange = (e) =>{
-  this.setState({email: e.target.value});
-};
-handlePasswordChange = (e) =>{
-  this.setState({password: e.target.value})
-};
-handleSignUp = () =>{
-  fetch('http://localhost:3000/auth/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      user: {
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password
-      }
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    localStorage.setItem('token', data.user.token);
-  });
-};
+
+  routeChange(){
+    let path = "/";
+    this.props.history.push(path);
+  }
+
+  handleSignUp = () => {
+    if( this.state.username && this.state.email && this.state.password){
+      
+        fetch("http://localhost:3000/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json"},
+          body: JSON.stringify({
+            user: {
+              username: this.state.username,
+              email: this.state.email,
+              password: this.state.password
+            }
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          localStorage.setItem("token", data.user.token);
+          setTimeout(()=>{
+            this.routeChange();
+          }, 300);
+        });
+    }
+
+  };
 
   render(){
     return(
@@ -43,42 +51,28 @@ handleSignUp = () =>{
           <form>
             <h1 >Sign up!</h1>
             <hr/>
+            
+            <UsernameInput
+              usernameValue={username => this.setState({username})} />
 
-            <div className="form-group">
-              <label className="control-label">Username</label>
-                <input type="text"
-                       name="username"
-                       className="form-control"
-                       placeholder="Username"
-                       value={this.state.username}
-                       onChange={this.handleUsernameChange}></input>
-            </div>
+            <EmailInput 
+              emailValue={email => this.setState({email})} />
 
-            <div className="form-group">
-              <label className="control-label">Email</label>
-                <input type="text"
-                       name="email"
-                       className="form-control"
-                       placeholder="Email"
-                       value={this.state.email}
-                       onChange={this.handleEmailChange}></input>
-            </div>
+            <PasswordInput 
+              passwordValue={password => this.setState({password})} />
 
-            <div className="form-group">
-              <label className="control-label">Password</label>
-                <input type="password"
-                       name="password"
-                       className="form-control"
-                       placeholder="Password"
-                       value={this.state.password}
-                       onChange={this.handlePasswordChange}></input>
-            </div>
+            <button
+              className="btn btn-info" 
+              type="button" 
+              onClick={this.handleSignUp}
+            > 
+              Join the fun!
+            </button>
 
-            <button className="btn btn-info" type="button" onClick={this.handleSignUp}>Join the fun!</button>
           </form>
       </div>
     )
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
