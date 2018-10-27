@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component{
   constructor(props){
@@ -6,8 +7,13 @@ class Login extends Component{
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     }
+  }
+
+  routeChange(){
+    let path = "/";
+    this.props.history.push(path);
   }
 
   handleEmailSend = (e) =>{
@@ -19,6 +25,8 @@ class Login extends Component{
   }
 
   handleTheLogin = () =>{
+    this.setState({email: '', password: '', validEmail: null});
+
     fetch('http://localhost:3000/auth/login',{
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
@@ -32,6 +40,9 @@ class Login extends Component{
     .then(response => response.json())
     .then(data => {
       localStorage.setItem('token', data.user.token);
+      setTimeout(()=>{
+        this.routeChange();
+      }, 300);
     });
   }
 
@@ -40,6 +51,7 @@ class Login extends Component{
       <div className="container">
         <form>
           <h1>Enter Information</h1>
+          
           <div className="form-group">
             <label className="control-label">Email</label>
             <input
@@ -71,4 +83,4 @@ class Login extends Component{
   }
 }
 
-export default Login;
+export default withRouter(Login);

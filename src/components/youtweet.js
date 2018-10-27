@@ -40,10 +40,14 @@ render(){
   return(
       <div>
         <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
-        <VideoPlayer video={this.state.selectedVideo}/>
-        <VideoList
-          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-          videos={this.state.videos}/>
+
+        <div className="row">
+          <VideoPlayer video={this.state.selectedVideo}/>
+
+          <VideoList
+            onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos}/>
+        </div>
       </div>
     );
   }

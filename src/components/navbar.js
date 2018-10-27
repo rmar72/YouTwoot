@@ -11,29 +11,41 @@ const NavBar = () =>{
   const logOut = function(){
     localStorage.removeItem('token');
   }
+  var logged = false;
+
+  const checkToken = () =>{
+    var token = localStorage.getItem('token');
+    if(token){
+      logged=true;
+      return token
+    }
+  }
+
+  checkToken()
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-      <a className="navbar-brand" style={navStyle} href="#">YouTwoot</a>
-      <div>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <a className="nav-link" href="/">Home </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/signup">Sign Up</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/youtweet">YT</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/login">Log in</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/" onClick={logOut}>Log out</a>
-          </li>
-        </ul>
-      </div>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+       <a className="navbar-brand" href="#" style={navStyle}>YouTwoot</a>
+       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems">
+         <span className="navbar-toggler-icon"></span>
+       </button>
+
+       <div className="collapse navbar-collapse" id="navbarItems">
+           <ul className="navbar-nav mr-auto" id="linkItem">
+             <li className="nav-item" >
+               <a className="nav-link" href="/">Home</a>
+             </li>
+             {logged ? (<li className="nav-item"><a className="nav-link" href="/youtweet">YT</a></li>) : ''}
+           </ul>
+
+           <ul className="navbar-nav ml-auto" id="linkItem">
+             {logged ? '' : (<li className="nav-item"><a className="nav-link" href="/signup">Sign Up</a></li>)}
+
+             {logged
+               ? (<li className="nav-item"><a className="nav-link" href="/" onClick={logOut}>Log out</a></li>)
+               : (<li className="nav-item"> <a className="nav-link" href="/login">Log in</a></li>)}
+           </ul>
+       </div>
     </nav>
   )
 }

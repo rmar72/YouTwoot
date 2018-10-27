@@ -30,8 +30,7 @@ const VideoListItem = ({video, onVideoSelect}) => {
   }
 
   return(
-      <li onClick={() => onVideoSelect(video)}
-        className="list-group-item">
+      <li onClick={() => onVideoSelect(video)} className="list-group-item">
         <div className="media">
             <img className="mr-3" src={imageUrl}/>
             <div className="title">{video.snippet.title}</div>

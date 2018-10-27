@@ -23,10 +23,7 @@ const VideoPlayer = ({video}) => {
   }
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-2 trending">{trendTab()}</div>
-        <div className="col-8">
+        <div className="col-md-7 video-player">
           <div className="embed-responsive embed-responsive-16by9">
             <iframe className="embed-responsive-item" src={url} allowFullScreen></iframe>
           </div>
@@ -39,9 +36,6 @@ const VideoPlayer = ({video}) => {
             </div>
           </ul>
         </div>
-        <div className="col-2 trending">{checkStatus()}</div>
-      </div>
-    </div>
   );
 };
 

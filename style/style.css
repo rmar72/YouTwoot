@@ -7,15 +7,12 @@
   width: 75%;
 }
 
-.video-item img{
-  max-width: 50px;
+.media img{
+  min-width: 150px;
 }
 
-.video-player .details{
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.video-player{
+  margin-left: 10px;
 }
 
 .videoItems{
@@ -53,6 +50,10 @@
 }
 
 .title{
-  word-wrap: break-word;
+  word-wrap: normal;
   font-size: 16px
+}
+
+#linkItem li a{
+  color: lightgray;
 }
