@@ -6,8 +6,13 @@ class Login extends Component{
     super(props)
 
     this.state = {
+      email: '',
       password: '',
     }
+  }
+
+  handleEmailSend = (e) =>{
+    this.setState({email: e.target.value})
   }
 
   handlePasswordSend = (e) =>{
@@ -39,7 +44,17 @@ class Login extends Component{
         <form>
           <h1>Enter Information</h1>
           
-          <EmailInput/>
+          <div className="form-group">
+            <label className="control-label">Email</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Your email"
+              className="form-control"
+              value={this.state.email}
+              onChange={this.handleEmailSend}
+              ></input>
+          </div>
 
           <div className="form-group">
             <label className="control-label">Password</label>
