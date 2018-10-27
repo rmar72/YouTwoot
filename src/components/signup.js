@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import UsernameInput from "./username_input";
 import EmailInput from "./email_input";
 import PasswordInput from "./password_input";
+import { withRouter } from 'react-router-dom';
 
 class SignUp extends Component {
   constructor(props){
@@ -12,6 +13,11 @@ class SignUp extends Component {
       email: "",
       password: ""
     }
+  }
+
+  routeChange(){
+    let path = "/";
+    this.props.history.push(path);
   }
 
   handleSignUp = () => {
@@ -31,6 +37,9 @@ class SignUp extends Component {
         .then(response => response.json())
         .then(data => {
           localStorage.setItem("token", data.user.token);
+          setTimeout(()=>{
+            this.routeChange();
+          }, 300);
         });
     }
 
@@ -66,4 +75,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
