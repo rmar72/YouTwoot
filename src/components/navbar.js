@@ -1,6 +1,6 @@
 import React from 'react';
 
-const navStyle = {
+const brandStyle = {
   fontSize: '21x',
   color: 'white',
   fontFamily: 'Lucida Console'
@@ -8,7 +8,7 @@ const navStyle = {
 
 const NavBar = () =>{
 
-  const logOut = function(){
+  const logOut = () =>{
     localStorage.removeItem('token');
   }
   var logged = false;
@@ -25,7 +25,7 @@ const NavBar = () =>{
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-       <a className="navbar-brand" href="#" style={navStyle}>YouTwoot</a>
+       <a className="navbar-brand" href="#" style={brandStyle}>YouTwoot</a>
        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarItems">
          <span className="navbar-toggler-icon"></span>
        </button>

@@ -12,7 +12,7 @@ const VideoListItem = ({video, onVideoSelect}) => {
     if(token){
       fetch('http://localhost:3000/users/tweet-video',{
         method:'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Authorization': `Token ${token}`
         },
@@ -26,9 +26,9 @@ const VideoListItem = ({video, onVideoSelect}) => {
       .then(data => console.log(data))
       .catch(err => console.log(err));
     }
- 
+
   }
-  
+
   const text = video.snippet.title;
   console.log(encodeURIComponent(text))
   return(
@@ -38,8 +38,8 @@ const VideoListItem = ({video, onVideoSelect}) => {
             <div className="title">{video.snippet.title}</div>
         </div>
 
-        <div>
-          <a type="button" 
+        <div id="tweetDiv">
+          <a type="button"
             className="btn btn-block btn-social btn-twitter"
             onClick={(e) => tweetVideo(e, video)}
             href={`https://twitter.com/intent/tweet?url=https%3A//youtu.be/${video.id}&text=${text}&via=YouTube&related=YouTube,YouTubeTrends,YTCreators`}
@@ -48,7 +48,6 @@ const VideoListItem = ({video, onVideoSelect}) => {
           >
             <span className="fa fa-twitter"></span> Tweet Me!
           </a>
-
         </div>
 
       </li>

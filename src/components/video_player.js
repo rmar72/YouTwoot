@@ -34,6 +34,9 @@ const VideoPlayer = ({video}) => {
             <div className="collapse description" id="content">
               {video.snippet.description}
             </div>
+            <div>
+              {checkStatus()}
+            </div>
           </ul>
         </div>
   );
