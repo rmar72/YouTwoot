@@ -20,7 +20,6 @@ const NavBar = () =>{
       return token
     }
   }
-
   checkToken()
 
   return (
@@ -32,10 +31,17 @@ const NavBar = () =>{
 
        <div className="collapse navbar-collapse" id="navbarItems">
            <ul className="navbar-nav mr-auto" id="linkItem">
-             <li className="nav-item" >
+             <li className="nav-item">
                <a className="nav-link" href="/">Home</a>
              </li>
-             {logged ? (<li className="nav-item"><a className="nav-link" href="/youtweet">YT</a></li>) : ''}
+             <li className="nav-item">
+               <a className="nav-link" href="/about">About Us</a>
+             </li>
+             <li className="nav-item">
+               <a className="nav-link" href="/contact">Contact Us</a>
+             </li>
+             {logged ? (<li className="nav-item"><a className="nav-link" href="/youtweet"><span className="hidden-route">YT</span></a></li>) : ''}
+             {logged ? (<li className="nav-item"><a className="nav-link" href="/dashboard"><span className="hidden-route">Dashboard</span></a></li>) : ''}
            </ul>
 
            <ul className="navbar-nav ml-auto" id="linkItem">
