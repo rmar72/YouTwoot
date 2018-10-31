@@ -5,7 +5,10 @@ import Home from './components/home';
 import SignUp from './components/signup';
 import Login from './components/login';
 import NavBar from './components/navbar';
-import { BrowserRouter as Router, Link, Redirect} from 'react-router-dom';
+import About from './components/about';
+import Contact from './components/contact_us';
+import Dashboard from './components/user_dashboard';
+import { BrowserRouter as Router, Redirect} from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 
 class App extends Component{
@@ -51,8 +54,22 @@ class App extends Component{
                   }
                 }/>
 
+              <Route path="/about" exact render={
+                  ()=>{
+                    return (<About />);
+                  }
+                }/>
+
+              <Route path="/contact" exact render={
+                  ()=>{
+                    return (<Contact/>);
+                  }
+                }/>
+
               <PrivateRoute path="/youtweet" exact component={YouTweet}/>
-              
+
+              <PrivateRoute path="/dashboard" exact component={Dashboard}/>
+
             </div>
       </Router>
     )

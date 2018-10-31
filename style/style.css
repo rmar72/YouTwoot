@@ -12,7 +12,8 @@
 }
 
 .video-player{
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-right: 50px;
 }
 
 .videoItems{
@@ -28,17 +29,9 @@
   font-size: 12px;
 }
 
-.trending{
-  font-size: 20px;
-  text-align: center;
-  color: #0195c6;
-  writing-mode: tb-rl;
-  transform: rotate(-90deg);
-}
-
 .highlight{
   color: goldenrod;
-  font-size: 22px
+  font-size: 22px;
 }
 
 .itemContainer{
@@ -56,4 +49,19 @@
 
 #linkItem li a{
   color: lightgray;
+}
+
+#tweetDiv{
+  padding-top: 5px;
+}
+#tweetDiv a{
+  width: 120px;
+}
+#tweetDiv a:hover{
+  background-color: lightblue;
+}
+
+.hidden-route{
+  color: goldenrod;
+  font-size: 17px;
 }
